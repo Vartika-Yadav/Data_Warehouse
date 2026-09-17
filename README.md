@@ -171,7 +171,6 @@ Through this project, I worked with:
 
 * Relational databases
 * SQL Server
-* T-SQL
 * ETL/ELT concepts
 * Data cleaning
 * Data transformation
