@@ -1,1 +1,131 @@
+/*
+===============================================================================
+Bronze Layer: Load Data
+===============================================================================
+Script Purpose:
+    This script loads raw CSV data into the Bronze layer tables.
 
+    The Bronze layer stores the source data with minimal transformation.
+    Existing data is truncated before loading to ensure a clean reload.
+
+    MySQL version using LOAD DATA LOCAL INFILE.
+===============================================================================
+*/
+
+USE bronze;
+
+-- =============================================================
+-- CRM: Customer Information
+-- =============================================================
+
+TRUNCATE TABLE crm_cust_info;
+
+LOAD DATA LOCAL INFILE 'C:\Users\AUSS\AppData\Local\Temp\5232ea79-1edb-428a-ade3-4f1f500ce7d7_sql-data-warehouse-project.zip.7d7\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
+INTO TABLE crm_cust_info
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+-- =============================================================
+-- CRM: Product Information
+-- =============================================================
+
+TRUNCATE TABLE crm_prd_info;
+
+LOAD DATA LOCAL INFILE 'C:\Users\AUSS\AppData\Local\Temp\3469e7a4-c12c-46e5-bd67-ad65b07d63b4_sql-data-warehouse-project.zip.3b4\sql-data-warehouse-project\datasets\source_crm\prd_info.csv'
+INTO TABLE crm_prd_info
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+-- =============================================================
+-- CRM: Sales Details
+-- =============================================================
+
+TRUNCATE TABLE crm_sales_details;
+
+LOAD DATA LOCAL INFILE 'C:\Users\AUSS\AppData\Local\Temp\4e536e24-48ff-4d6f-b612-240bfe914453_sql-data-warehouse-project.zip.453\sql-data-warehouse-project\datasets\source_crm\sales_details.csv'
+INTO TABLE crm_sales_details
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+-- =============================================================
+-- ERP: Location
+-- =============================================================
+
+TRUNCATE TABLE erp_loc_a101;
+
+LOAD DATA LOCAL INFILE 'C:\Users\AUSS\AppData\Local\Temp\6129c7b9-63dc-4ecb-8986-874e4dc7c89d_sql-data-warehouse-project.zip.89d\sql-data-warehouse-project\datasets\source_erp\CUST_AZ12.csv'
+INTO TABLE erp_loc_a101
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+-- =============================================================
+-- ERP: Customer Information
+-- =============================================================
+
+TRUNCATE TABLE erp_cust_az12;
+
+LOAD DATA LOCAL INFILE 'C:\Users\AUSS\AppData\Local\Temp\a296cae1-882f-46d2-b447-564ee620193e_sql-data-warehouse-project.zip.93e\sql-data-warehouse-project\datasets\source_erp\LOC_A101.csv'
+INTO TABLE erp_cust_az12
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+-- =============================================================
+-- ERP: Product Category
+-- =============================================================
+
+TRUNCATE TABLE erp_px_cat_g1v2;
+
+LOAD DATA LOCAL INFILE 'C:\Users\AUSS\AppData\Local\Temp\34bbbde5-cba2-495f-96ab-ddb3cabf8edf_sql-data-warehouse-project.zip.edf\sql-data-warehouse-project\datasets\source_erp\PX_CAT_G1V2.csv'
+INTO TABLE erp_px_cat_g1v2
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+-- =============================================================
+-- Verify Row Counts
+-- =============================================================
+
+SELECT 'crm_cust_info' AS table_name, COUNT(*) AS row_count
+FROM crm_cust_info
+
+UNION ALL
+
+SELECT 'crm_prd_info', COUNT(*)
+FROM crm_prd_info
+
+UNION ALL
+
+SELECT 'crm_sales_details', COUNT(*)
+FROM crm_sales_details
+
+UNION ALL
+
+SELECT 'erp_loc_a101', COUNT(*)
+FROM erp_loc_a101
+
+UNION ALL
+
+SELECT 'erp_cust_az12', COUNT(*)
+FROM erp_cust_az12
+
+UNION ALL
+
+SELECT 'erp_px_cat_g1v2', COUNT(*)
+FROM erp_px_cat_g1v2;
