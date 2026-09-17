@@ -1,0 +1,16 @@
+
+
+
+SELECT COUNT(*) AS erp_customer_rows
+FROM silver.erp_cust_az12;
+
+SELECT *
+FROM silver.erp_cust_az12
+LIMIT 20;
+
+SELECT *
+FROM silver.erp_cust_az12
+WHERE bdate > CURDATE();
+
+SELECT DISTINCT gen
+FROM silver.erp_cust_az12;
