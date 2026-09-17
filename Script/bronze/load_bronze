@@ -13,6 +13,12 @@ Script Purpose:
 */
 
 USE bronze;
+DROP PROCEDURE IF EXISTS load_bronze;
+
+DELIMITER $$
+
+CREATE PROCEDURE load_bronze()
+BEGIN
 
 -- =============================================================
 -- CRM: Customer Information
@@ -97,6 +103,9 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+END $$
+
+DELIMITER ;
 
 -- =============================================================
 -- Verify Row Counts
@@ -129,3 +138,5 @@ UNION ALL
 
 SELECT 'erp_px_cat_g1v2', COUNT(*)
 FROM erp_px_cat_g1v2;
+
+
