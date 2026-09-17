@@ -1,4 +1,4 @@
-<img width="1027" height="712" alt="image" src="https://github.com/user-attachments/assets/5c70290a-961b-4546-9f88-ce919c4afbf2" /># Data Warehouse & Analytics Project
+# Data Warehouse & Analytics Project
 
 A hands-on **SQL Data Warehouse and Analytics project** built using SQL Server. The project focuses on data engineering fundamentals such as **ETL, data cleaning, data modeling, SQL analytics, and business reporting**.
 
