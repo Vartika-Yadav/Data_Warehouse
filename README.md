@@ -53,12 +53,14 @@ The main objectives of the project are:
 
 ## 🛠️ Technologies Used
 
-* **SQL Server**
-* **SQL Server Management Studio (SSMS)**
-* **T-SQL**
-* **CSV**
-* **Draw.io**
-* **Git & GitHub**
+Technologies Used
+
+- MySQL
+- MySQL Workbench
+- SQL
+- Draw.io
+- Git & GitHub
+
 
 ## 📊 Data Sources
 
